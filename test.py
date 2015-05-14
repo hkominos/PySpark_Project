@@ -1,8 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from pyspark import SparkConf, SparkContext
-#spark-submit --master spark://host-10-0-100-5.openstacklocal:6066│ubuntu@host-10-0-100-5:~$ 
-# test.py                                           
+"""
+#spark-submit --master spark://host-10-0-100-5.openstacklocal:6066│ubuntu@host-10-0-100 test.py       
+                             
 #spark set sc
+"""
 conf = SparkConf()
 conf.setMaster("local")
 conf.setAppName("test")
