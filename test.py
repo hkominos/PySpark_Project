@@ -11,7 +11,7 @@ conf.setAppName("Spark_read")
 sc = SparkContext(conf = conf)
 
 files=sc.textFile("/BAM/*")
-filtered=files.filter(lambda line: abs(int(line.split("\t")[8]))>15)
+filtered=files.filter(lambda line: abs(int(line.split("\t")[8]))>1000)
 countof=files.count()
 filtered.saveAsTextFile("/output2.txt")
 
