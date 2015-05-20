@@ -7,10 +7,13 @@ from pyspark import SparkConf, SparkContext
 #spark set sc
 """
 conf = SparkConf()
-conf.setAppName("test")
+conf.setAppName("Spark_read")
 sc = SparkContext(conf = conf)
 
 files=sc.textFile("/BAM/*")
-rdd1=files.filter(lambda x:x.split("\t")[8]<1000)
+filtered=files.filter(lambda line: -1000<int(line.split("\t")[8])<1000)
 countof=files.count()
+filtered.saveAsTextFile("/output.txt")
+
+
 print "my count is %i" % (countof)
