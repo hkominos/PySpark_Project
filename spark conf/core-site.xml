@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>  
+<configuration>
+  <property>
+    <name>fs.swift.impl</name>
+    <value>org.apache.hadoop.fs.swift.snative.SwiftNativeFileSystem</value>
+  </property>
+  <property>
+    <name>fs.swift.service.SparkTest.auth.url</name>
+    <value>smog.uppmax.uu.se:5000/v2.0</value>
+  </property>
+  <property>
+    <name>fs.swift.service.SparkTest.auth.endpoint.prefix</name>
+    <value>endpoints</value>
+  </property>
+  <property>
+    <name>fs.swift.service.SparkTest.http.port</name>
+    <value>8080</value>
+  </property>
+  <property>
+    <name>fs.swift.service.SparkTest.region</name>
+    <value>RegionOne</value>
+  </property>
+  <property>
+    <name>fs.swift.service.SparkTest.public</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>fs.swift.service.SparkTest.tenant</name>
+    <value>g2015016</value>
+  </property>
+  <property>
+    <name>fs.swift.service.SparkTest.username</name>
+    <value>hege9540</value>
+  </property>
+  <property>
+    <name>fs.swift.service.SparkTest.password</name>
+    <value>xxxxxxxx</value>
+  </property>
+</configuration>

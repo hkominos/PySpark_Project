@@ -5,6 +5,7 @@ print "###################"
 print samfile.references
 print len(list(samfile.fetch()))
 for read in samfile.fetch(region="20"):
+	isize=alignment.tlen   #This is column 9, the size
      print read
 
 samfile.close()
