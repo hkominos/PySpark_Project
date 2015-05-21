@@ -7,8 +7,8 @@ import swiftclient.client
 import pysam
 
 # Replace user and key with username and password
-config = {'user':'hege9540', 
-          'key':'wpfeT429::hg',
+config = {'user':'xxxxx', 
+          'key':'xxxxxx',
           'tenant_name':'g2015016',
           'authurl':'http://smog.uppmax.uu.se:5000/v2.0'}
 
