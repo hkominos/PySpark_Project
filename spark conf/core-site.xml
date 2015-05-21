@@ -26,11 +26,11 @@
   </property>
   <property>
     <name>fs.swift.service.SparkTest.tenant</name>
-    <value>g2015016</value>
+    <value>xxxxxxx</value>
   </property>
   <property>
     <name>fs.swift.service.SparkTest.username</name>
-    <value>hege9540</value>
+    <value>xxxxxxx</value>
   </property>
   <property>
     <name>fs.swift.service.SparkTest.password</name>
