@@ -1,9 +1,9 @@
 import os
 import swiftclient.client
-config = {'user':'hege9540', 
+config = {'user':'xxxxxxx', 
           'key':'XXXXXX',
-          'tenant_name':'g2015016',
-          'authurl':'http://smog.uppmax.uu.se:5000/v2.0'}
+          'tenant_name':'xxxxxxx',
+          'authurl':'xxxxxxx'}
 conn = swiftclient.client.Connection(auth_version=2, **config)
 
 (response, bucket_list) = conn.get_account()
