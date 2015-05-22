@@ -2,7 +2,7 @@
 
 from pyspark import SparkConf, SparkContext
 """
-#spark-submit --master spark://host-10-0-100-5.openstacklocal:7077 test.py      
+#spark-submit --master spark://host-10-0-100-5.openstacklocal:7077 Spark_filter.py      
                              
 #spark set sc
 """
@@ -11,9 +11,12 @@ conf.setAppName("Spark_read")
 sc = SparkContext(conf = conf)
 
 files=sc.textFile("/BAM/*")
-filtered=files.filter(lambda line: abs(int(line.split("\t")[8]))>1000)
-countof=files.count()
-filtered.saveAsTextFile("/output2.txt")
+cleaned=files.filter(lambda line: len(line)>0)
+filtered=cleaned.filter(lambda line: abs(int(line.split()[8]))>1000)
+oldsize=cleaned.count()
+newsize=filtered.count()
+filtered.saveAsTextFile("/output")
 
 
-print "my count is %i" % (countof)
+print "origina size was" % (oldsize)
+print "filtered size is  " % (newsize)
