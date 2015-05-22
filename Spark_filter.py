@@ -18,5 +18,5 @@ newsize=filtered.count()
 filtered.saveAsTextFile("/output")
 
 
-print "origina size was" % (oldsize)
-print "filtered size is  " % (newsize)
+print "original size was %i" % (oldsize)
+print "filtered size is  %i" % (newsize)
