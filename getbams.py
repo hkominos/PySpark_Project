@@ -8,7 +8,7 @@ import pysam
 
 # Replace user and key with username and password
 config = {'user':'xxxxxx', 
-          'key':'xxxxxxx',
+          'key':'xxxxxx',
           'tenant_name':'g2015016',
           'authurl':'http://smog.uppmax.uu.se:5000/v2.0'}
 
@@ -17,7 +17,7 @@ conn = swiftclient.client.Connection(auth_version=2, **config)
 (response, bucket_list) = conn.get_account()
 
 objectlist = []
-filestoconvert = 4
+filestoconvert = 10
 
 from datetime import datetime
 startTime = datetime.now()
@@ -38,6 +38,8 @@ count = 1
 
 #Convert filestoconvert number of files from BAM to SAM
 for obj in objectlist:
+	if obj == 'HG00100.chrom20.ILLUMINA.bwa.GBR.low_coverage.20130415.bam':
+		continue  #skip this file gives segmentation fault
 	print '### Get file from swift: ' + str(obj)
 	if count > filestoconvert:
 		break
