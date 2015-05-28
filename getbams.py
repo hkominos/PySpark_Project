@@ -43,24 +43,43 @@ for obj in objectlist:
 	print '### Get file from swift: ' + str(obj)
 	if count > filestoconvert:
 		break
-	encoded_name = obj.encode('utf-8')    
+	encoded_name = obj.encode('utf-8')
+	startTimeSwift = datetime.now()    
 	(response, obj)=conn.get_object('GenomeData', obj)
+	networktime = datetime.now() - startTimeSwift
+	print '--- Transfer time: ' +str(networktime.total_seconds())
 	print '### Open BAM file for local write: ' + encoded_name
 	bamfile = open(encoded_name,'w')
 	print '### Writing'
+	startTimeBAMWrite = datetime.now()
 	bamfile.write(obj)
 	print '### Close BAM file'
 	bamfile.close()
+	writetimebam = datetime.now() - startTimeBAMWrite
+	print '--- Write time BAM: ' + str(writetimebam.total_seconds())
+	bamsize = os.path.getsize(encoded_name) >> 20
+	print '--- File size BAM (Mb): ' + str(bamsize)
+	bampersecond = bamsize / writetimebam.total_seconds()
+	swiftpersecond = bamsize / networktime.total_seconds()
+	print '--- Swift transfer Mb/sec: ' +str(swiftpersecond)
+	print '--- BAM write Mb/sec: ' + str(bampersecond)
         samfilename = encoded_name+'.sam'
 	print '### Open SAM file for local write: ' + samfilename
 	samfile = open(samfilename,'w')
 	print '### Pysam view get all rows'
+	starttimepysam = datetime.now()
 	rows = pysam.view("-S", encoded_name)
 	print '### Loop rows to write SAM'
 	for r in rows:
   		 samfile.write(r)
 	print '### Close SAM file'
 	samfile.close()
+	pysamtime = datetime.now() - starttimepysam
+	print '--- Convert+write SAM: ' + str(pysamtime.total_seconds())
+	samsize = os.path.getsize(samfilename) >> 20
+	print '--- File size SAM (Mb): ' + str(samsize)
+	sampersecond = samsize / pysamtime.total_seconds()
+	print '--- PySAM+Write Mb/sec: ' +str(sampersecond)
 	print '### Remove BAM file'
 	os.remove(encoded_name)
 	print '### Current file count: ' +str(count)
@@ -68,5 +87,5 @@ for obj in objectlist:
 	print '### ----------------------------------------'
 	#Todo Move files to Hadoop HDFS and remove from local file system
 timetaken = datetime.now() - startTime
-print '### Time taken: ' + str(timetaken)
+print '=== Total Time taken: ' + str(timetaken)
 print '### Finished'
