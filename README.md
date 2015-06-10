@@ -6,7 +6,7 @@
 # PySpark Project
 ###Larga Datasets For Scientific Applications -Uppsala University 2015###
 
-Authors : Kominos Charalampos , Henrik Gelius
+Authors : Kominos Charalampos , Henrik G
 
 Mini Project In Big Data.<br>
 In this Project we have a python script for interacting with the Openstack Cloud Swift Client and download files.<br>
