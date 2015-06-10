@@ -9,7 +9,9 @@ Uppsala University 2015
 
 Authors : Kominos Charalampos , Henrik Gelius
 
-First Project In Big Data.
+Mini Project In Big Data...
 In this Project we have a python script for interacting with the Openstack Cloud Swift Client and download files.
+
 We have the Spark script which filters the dataset depending on our needs.
+
 We Have the Elastic Search Script for visualizing the results.
